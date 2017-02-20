@@ -59,7 +59,7 @@ give the new user sudo priveledges, by copying the `root` line within the `# Use
 $ sudo visudo
 ```
 
-reboot the Raspberry Pi
+reboot **milkbar**
 ```
 $ sudo reboot now
 ```
