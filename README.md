@@ -1,22 +1,24 @@
 ## milkbar
 
-The below is a guide to setup a media server on a Raspberry Pi 3 Model B running Raspian Jessie with Pixel, Version: January 2017, Release date: 2017-01-11, Kernel version: 4.4
+a media server on a Raspberry Pi 3 Model B running Raspian Jessie with Pixel, Version: January 2017, Release date: 2017-01-11, Kernel version: 4.4
+
+### setup
 
 download the [latest image](https://www.raspberrypi.org/downloads/raspbian/)
 
-insert the SD card into the workstation and identify the `disk number`:
+insert the SD card into the workstation and identify the `disk-number`:
 ```
 $ diskutil list
 ```
 
 unmount the disk:
 ```
-$ diskutil unmountDisk /dev/disk<disk number>
+$ diskutil unmountDisk /dev/disk<disk-number>
 ```
 
 copy the image to the SD card:
 ```
-$ sudo dd bs=1m if=<path to recently downloaded image> of=/dev/rdisk<disk number>
+$ sudo dd bs=1m if=<path to recently downloaded image> of=/dev/rdisk<disk-number>
 ```
 
 check the progress with `SIGINFO` (ctrl+t):
@@ -29,12 +31,12 @@ load: 2.81  cmd: dd 15456 uninterruptible 0.00u 0.09s
 
 once the image is copied over, eject the disk:
 ```
-$ diskutil eject /dev/rdisk<disk number>
+$ diskutil eject /dev/rdisk<disk-number>
 ```
 
 ssh is [disabled by default](https://www.raspberrypi.org/documentation/remote-access/ssh/). Insert the SD card into the Raspberry Pi, and boot it up. Use a mouse and a display to navigate through the Raspberry Pi Configuration and enable ssh.
 
-get the ip address of the Rasberry Pi:
+get the ip address of the Raspberry Pi:
 ```
 $ sudo arp-scan --interface=en1 --localnet
 ```
@@ -44,7 +46,7 @@ change the `hostname` of the Raspberry Pi, and add a user:
 $ ssh pi@<ip-address>
 $ sudo sed -ie 's/raspberrypi/milkbar/g' /etc/hostname
 $ sudo sed -ie 's/raspberrypi/milkbar/g' /etc/hosts
-$ sudo adduser <user name>
+$ sudo adduser <user-name>
 ```
 
 make the ip address static:
@@ -52,7 +54,7 @@ make the ip address static:
 $ sudo sed -e "\$aip=<ip-address>" /boot/cmdline.txt
 ```
 
-give the new user sudo priveledges, by copying the `root` line within the `User priveledge specification`, and replacing `root` with the new `<user name>`:
+give the new user sudo priveledges, by copying the `root` line within the `# User priveledge specification`, and replacing `root` with the new `user-name`:
 ```
 $ sudo visudo
 ```
