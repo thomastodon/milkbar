@@ -83,6 +83,11 @@ identify the `device-name` of the mounted external hard drive:
 $ sudo blkid
 ```
 
+install package so we can mount ntfs
+```
+$ apt-get install -y ntfs-3g
+```
+
 mount the external hard drive at boot
 ```
 $ sudo sed -e "\$a<device-name> /media/pi/thomasshouler hfsplus defaults 0 0" /etc/fstab
