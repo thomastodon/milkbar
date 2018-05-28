@@ -73,12 +73,7 @@ $ sudo apt-get update
 $ sudo apt-get install plexmediaserver-installer
 ```
 
-connect an external hardrive to **milkbar**, and update it's access permissions:
-```
-$ sudo chmod 775 /media/pi
-```
-
-identify the `device-name` of the mounted external hard drive:
+identify the `device-uuid` and `device-name` of the mounted external hard drive:
 ```
 $ sudo blkid
 ```
@@ -88,7 +83,7 @@ install package so we can mount ntfs
 $ apt-get install -y ntfs-3g
 ```
 
-mount the external hard drive at boot
+add record to `/etc/fstab` for mounting on boot:
 ```
-$ sudo sed -e "\$a<device-name> /media/pi/thomasshouler hfsplus defaults 0 0" /etc/fstab
+UUID=<device-uuid> /mnt/plex ntfs defaults,auto,umask=000,users,rw 0 0
 ```
