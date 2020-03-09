@@ -14,6 +14,8 @@ start all the stuff
 ```
 /Users/thomasshouler/Radarr/Radarr; exit;
 mono --debug /Applications/Sonarr.app/Contents/MacOS/NzbDrone.exe
+chmod +x /Applications/Sonarr.app/Contents/MacOS/Sonarr
+/Applications/Sonarr.app/Contents/MacOS/Sonarr; exit;
 ```
 
 access things
